@@ -34,7 +34,7 @@ product_label.grid(row=0, column=0, sticky=W)
 # Create variable for product name
 product_var = StringVar()
 product_var.set("Select a product")
-
+#hai
 # Create dropdown menu for product name
 product_options = ["Blink Led Program 3 sec", "Blink Led Program 1 sec", "Blink Led Program 5 sec"] # Add more products as needed
 product_menu = OptionMenu(left_frame, product_var, *product_options)
