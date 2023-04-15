@@ -1,6 +1,7 @@
 # Import Tkinter module
 from tkinter import *
 from tkinter.ttk import *
+import esptool
 
 # Create root window
 root = Tk()
@@ -35,7 +36,7 @@ product_var = StringVar()
 product_var.set("Select a product")
 
 # Create dropdown menu for product name
-product_options = ["Product A", "Product B", "Product C"] # Add more products as needed
+product_options = ["Blink Led Program 3 sec", "Blink Led Program 1 sec", "Blink Led Program 5 sec"] # Add more products as needed
 product_menu = OptionMenu(left_frame, product_var, *product_options)
 product_menu.grid(row=0, column=1, padx=5)
 
@@ -43,6 +44,10 @@ product_menu.grid(row=0, column=1, padx=5)
 def print_product():
     product_selected = product_var.get()
     print(f'Product Selected in dropdown = {product_selected}')
+    if product_selected == "Blink Led Program 3 sec":
+        print("uploading Blink Led Program 3 sec")
+        esptool.main(["--chip","eps32","--port","/dev/cu.usbserial-0001","write_flash","0x10000","3sec.bin"])
+        print("upload sucessfull")
 
 style = Style()
 style.configure("W.TButton", font=("calibri", 12, "bold"), foreground="green")
